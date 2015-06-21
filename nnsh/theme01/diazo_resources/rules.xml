@@ -117,7 +117,6 @@
 
         <!-- footer blocks -->
         <replace theme-children="//footer/div[@class='container']/div[@class='row']" css:content="div#nnsh-blocks" />
-<!--        <drop theme="//footer/div[@class='container']/div[@class='row']/div[@class='col-md-3']" /> -->
           <replace css:content="div#nnsh-blocks div">
             <div class="col-md-3">
               <div>
