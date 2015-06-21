@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+
+    <!-- Apply the following rules to standard Plone pages -->
+    <rules css:if-content="#visual-portal-wrapper">
+
+        <theme href="porto/diazo_index.html" />
+
+        <!-- Replace title with Plone's page title  -->
+        <replace css:theme="html head title" css:content="html head title" />
+
+        <!-- Copy base tag from Plone ??-->
+        <before css:theme-children="html head" css:content="html head base" />
+
+        <!-- merge classes from Plone body with theme body -->
+        <merge attributes="class" css:theme="body" css:content="body" />
+
+<!--        <after css:theme="body p" css:content="#visual-portal-wrapper" /> -->
+
+        <!-- logo -->
+        <copy css:theme="h1.logo a" css:content="a#portal-logo" attributes="href title alt"/>
+        <copy css:theme="h1.logo a img" css:content="a#portal-logo img" attributes="src alt title" />
+
+        <!-- drop down menu(nav) -->
+        <drop css:theme="div.social-icons" />
+        <replace theme-children="//nav/ul[@id='mainMenu']" content-children="//ul[@id='portal-globalnav']" />
+          <replace content-children="//ul[@id='portal-globalnav']/li[@class='selected']">
+            <xsl:attribute name="class">dropdown active</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li[@class='plain']">
+            <xsl:attribute name="class">dropdown</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li/a">
+            <xsl:attribute name="class">dropdown-toggle</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li/ul">
+            <xsl:attribute name="class">dropdown-menu</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+
+        <!-- slide -->
+        <replace css:theme-children="div#revolutionSlider ul" css:content="div#nnsh-slide img" />
+          <replace css:content="div#nnsh-slide img">
+            <li data-transition="fade" data-slotamount="13" data-masterspeed="300" >
+              <img src="img/slides/slide-bg.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <xsl:attribute name="src"><xsl:value-of select="./@src"/></xsl:attribute>
+                <xsl:attribute name="alt"><xsl:value-of select="./@alt"/></xsl:attribute>
+                <xsl:attribute name="title"><xsl:value-of select="./@alt"/></xsl:attribute>
+              </img>
+                <div class="tp-caption main-label sft stb"
+                  data-x="30"
+                  data-y="210"
+                  data-speed="2300"
+                  data-start="1500"
+                  data-easing="easeOutExpo" style="font-size:3em"><xsl:value-of select="./@alt"/></div>
+            </li>
+          </replace>
+
+        <!-- sidebar -->
+        <replace css:theme-children="aside.sidebar" css:content-children="div#portal-column-one" />
+        <drop css:theme="section.page-top" />
+          <replace css:content="div.portletWrapper">
+            <section class="toggle active">
+              <label><xsl:value-of select=".//dt" /></label>
+              <div class="toggle-content">
+                <ul class="nav nav-list primary push-bottom">
+                  <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']">
+                    <li>
+                      <a>
+                        <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
+                        <xsl:value-of select=".//a" />
+                      </a>
+                    </li>
+                  </xsl:for-each>
+                </ul>
+                <xsl:for-each select=".//dd[@class = 'ad-portlet']">
+                  <a target="_blank">
+                    <xsl:attribute name="href"><xsl:value-of select=".//a/@href"/></xsl:attribute>
+                    <xsl:attribute name="title"><xsl:value-of select=".//a/@title"/></xsl:attribute>
+                    <xsl:attribute name="alt"><xsl:value-of select=".//a/@title"/></xsl:attribute>
+                    <img style="width:100%;margin-bottom:5px">
+                      <xsl:attribute name="src"><xsl:value-of select=".//a/img/@src"/></xsl:attribute>
+                      <xsl:attribute name="title"><xsl:value-of select=".//a/img/@alt"/></xsl:attribute>
+                      <xsl:attribute name="alt"><xsl:value-of select=".//a/img/@alt"/></xsl:attribute>
+                    </img>
+                  </a>
+                </xsl:for-each>
+              </div>
+            </section>
+          </replace>
+
+
+        <!-- banner ad -->
+        <before css:theme-children="div.col-md-9" css:content-children="div#nnsh_ad" />
+
+        <!-- content -->
+        <replace css:theme-children="div.col-md-9" css:content-children="div#content-core" />
+          <replace css:content="div#content-core ul">
+            <xsl:copy>
+              <xsl:attribute name="class">list icons</xsl:attribute>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </replace>
+
+          <replace css:content-children="div#content-core ul li a">
+            <xsl:copy>
+              <xsl:attribute name="href"><xsl:value-of select="./@href"/></xsl:attribute>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </replace>
+
+        <!-- footer blocks -->
+        <replace theme-children="//footer/div[@class='container']/div[@class='row']" css:content="div#nnsh-blocks" />
+<!--        <drop theme="//footer/div[@class='container']/div[@class='row']/div[@class='col-md-3']" /> -->
+          <replace css:content="div#nnsh-blocks div">
+            <div class="col-md-3">
+              <div>
+                <xsl:copy-of select="./*" />
+              </div>
+            </div>
+          </replace>
+
+        <!-- copyright -->
+        <drop css:theme="div.footer-copyright a.logo" />
+        <replace css:theme-children="div.footer-copyright div.row div.col-md-7"
+                 css:content-children="div#portal-footer" />
+
+        <!-- subscribe -->
+        <replace css:theme-children="div.footer-copyright div.row div.col-md-4"
+                 css:content="div#portal-footer-wrapper div.form" />
+        <drop css:content="div#portal-footer-wrapper div.form label" />
+        <drop css:content="div#portal-footer-wrapper div.form dl" />
+        <drop css:content="div#portal-footer-wrapper div.form p.discreet" />
+        <strip css:content="div#portal-footer-wrapper div.form div" />
+        <replace css:content="div#portal-footer-wrapper div.form h3">
+          <h5><xsl:value-of select="." /></h5>
+        </replace>
+
+    </rules>
+
+</rules>

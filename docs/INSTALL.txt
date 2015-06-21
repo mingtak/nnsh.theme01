@@ -1,0 +1,17 @@
+nnsh.theme01 Installation
+-------------------------
+
+To install nnsh.theme01 using zc.buildout and the plone.recipe.zope2instance
+recipe to manage your project, you can do this:
+
+* Add ``nnsh.theme01`` to the list of eggs to install, e.g.:
+
+    [buildout]
+    ...
+    eggs =
+        ...
+        nnsh.theme01
+       
+* Re-run buildout, e.g. with:
+
+    $ ./bin/buildout
