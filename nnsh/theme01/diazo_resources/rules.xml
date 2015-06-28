@@ -5,9 +5,26 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
 
     <!-- Apply the following rules to standard Plone pages -->
+
     <rules css:if-content="#visual-portal-wrapper">
 
         <theme href="porto/diazo_index.html" />
+        <rules if-not-path="@@preview_theme">
+            <notheme if="$show_border" />
+            <notheme if="$is_manager" />
+        </rules>
+        <rules css:if-content="div.template-add_edit-form">
+            <notheme css:if-content="div.template-add-form" />
+            <notheme css:if-content="div.template-edit-form" />
+            <drop css:content="div#portal-footer-wrapper div.form" />
+            <drop css:content="div#nnsh-blocks" />
+            <drop css:content="div#nnsh-slide" />
+        </rules>
+        <rules if="$show_border">
+            <drop css:content="div#nnsh-blocks" />
+            <drop css:content="div#portal-footer-wrapper div.form" />
+            <drop css:content="div#nnsh-slide" />
+        </rules>
 
         <!-- Replace title with Plone's page title  -->
         <replace css:theme="html head title" css:content="html head title" />
@@ -65,10 +82,15 @@
         <!-- sidebar -->
         <replace css:theme-children="aside.sidebar" css:content-children="div#portal-column-one" />
         <drop css:theme="section.page-top" />
+        <drop css:content="div#portal-column-two" />
+
+          <!-- portlet use dd tag -->
           <replace css:content="div.portletWrapper">
             <section class="toggle active">
               <label><xsl:value-of select=".//dt" /></label>
               <div class="toggle-content">
+
+                <!-- dd 轉 ul list -->
                 <ul class="nav nav-list primary push-bottom">
                   <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']">
                     <li>
@@ -79,6 +101,8 @@
                     </li>
                   </xsl:for-each>
                 </ul>
+
+                <!-- ad portlet -->
                 <xsl:for-each select=".//dd[@class = 'ad-portlet']">
                   <a target="_blank">
                     <xsl:attribute name="href"><xsl:value-of select=".//a/@href"/></xsl:attribute>
@@ -90,6 +114,23 @@
                       <xsl:attribute name="alt"><xsl:value-of select=".//a/img/@alt"/></xsl:attribute>
                     </img>
                   </a>
+                </xsl:for-each>
+
+                <!-- static portlet -->
+                <xsl:for-each select=".//div[@class = 'static_page']">
+                  <xsl:copy-of select=".//dd" />
+                </xsl:for-each>
+
+                <!-- marquee portlet -->
+                <xsl:for-each select=".//div[@class = 'marquee_page']">
+                  <marquee direction="up" scrollamount="2" height="200"><xsl:copy-of select=".//dd" /></marquee>
+                </xsl:for-each>
+
+                <!-- quick upload -->
+                <xsl:for-each css:select="dl.portlet.QuickUploadPortlet">
+                    <dl class="portlet QuickUploadPortlet">
+                      <xsl:copy-of select="./dd" />
+                    </dl>
                 </xsl:for-each>
               </div>
             </section>
@@ -141,6 +182,8 @@
           <h5><xsl:value-of select="." /></h5>
         </replace>
 
-    </rules>
+        <!-- drop header nav -->
+<!--        <drop css:theme="body header div.container nav.contactus" /> -->
 
+    </rules>
 </rules>
