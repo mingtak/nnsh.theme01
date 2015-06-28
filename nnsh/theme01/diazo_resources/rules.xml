@@ -63,6 +63,7 @@
 
         <!-- slide -->
         <replace css:theme-children="div#revolutionSlider ul" css:content="div#nnsh-slide img" />
+        <drop css:theme="div#content div.slider-container" if="$get_type != 'WebProfile'"/>
           <replace css:content="div#nnsh-slide img">
             <li data-transition="fade" data-slotamount="13" data-masterspeed="300" >
               <img src="img/slides/slide-bg.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
@@ -79,9 +80,14 @@
             </li>
           </replace>
 
+        <!-- Nav -->
+        <drop css:theme="section.page-top" if="$get_type = 'WebProfile'" />
+        <replace css:theme-children="section.page-top h2" content-children="//div[@id='content']/h1" />
+        <replace theme="//section[@class='page-top']/div[@class='container']/div[@class='row'][1]"
+               css:content="div#portal-breadcrumbs" />
+
         <!-- sidebar -->
         <replace css:theme-children="aside.sidebar" css:content-children="div#portal-column-one" />
-        <drop css:theme="section.page-top" />
         <drop css:content="div#portal-column-two" />
 
           <!-- portlet use dd tag -->
@@ -92,7 +98,8 @@
 
                 <!-- dd 轉 ul list -->
                 <ul class="nav nav-list primary push-bottom">
-                  <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']">
+<!--                  <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']"> -->
+                  <xsl:for-each css:select="dd.portletItem">
                     <li>
                       <a>
                         <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
