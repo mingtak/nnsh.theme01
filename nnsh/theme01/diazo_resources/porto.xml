@@ -175,6 +175,13 @@
             </xsl:copy>
           </replace>
 
+          <replace content="//div[@id='content-core']//ul[not(@class='list')]//li">
+            <xsl:copy>
+              <i class="icon icon-arrow-right"></i>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </replace>
+
           <replace css:content-children="div#content-core ul li a">
             <xsl:copy>
               <xsl:attribute name="href"><xsl:value-of select="./@href"/></xsl:attribute>
@@ -208,8 +215,55 @@
           <h5><xsl:value-of select="." /></h5>
         </replace>
 
-        <!-- drop header nav -->
-<!--        <drop css:theme="body header div.container nav.contactus" /> -->
+        <!-- portal-personaltools -->
+        <replace css:theme="body header div.container nav.contactus ul" css:content="#portal-personaltools"/>
+          <replace css:content="#portal-personaltools">
+            <ul class="nav nav-pills nav-top">
+              <xsl:for-each select=".//li">
+                <li>
+                  <a href=''>
+                    <xsl:attribute name="href"><xsl:value-of select="./a/@href" /></xsl:attribute>
+                    <i class="icon icon-angle-right" /><xsl:value-of select="./a" />
+                  </a>
+                </li>
+              </xsl:for-each>
+            </ul>
+          </replace>
+
+<!-- album list-->
+<replace css:content="div.album_list">
+<h3><xsl:value-of select="./h3" /></h3>
+
+  <ul class="portfolio-list sort-destination lightbox"
+      data-sort-id="portfolio"
+      data-plugin-options='{{"delegate": "a", "type": "image", "gallery": {{"enabled": true}}}}'>
+   <xsl:for-each select=".//img">
+    <li class="col-md-4 isotope-item websites">
+      <div class="portfolio-item img-thumbnail">
+        <a href="img/projects/project.jpg" class="thumb-info">
+          <xsl:attribute name="href">
+            <xsl:value-of select="./@short_src" />
+          </xsl:attribute>
+          <img alt="" class="img-responsive" src="img/projects/project.jpg">
+            <xsl:attribute name="alt"><xsl:value-of select="./@alt" /></xsl:attribute>
+            <xsl:attribute name="title"><xsl:value-of select="./@title" /></xsl:attribute>
+            <xsl:attribute name="src"><xsl:value-of select="./@src" /></xsl:attribute>
+          </img>
+<!--            <span class="thumb-info-title">
+              <span class="thumb-info-inner"><xsl:value-of select="./@title" /></span>
+              <span class="thumb-info-type">Website</span>
+            </span>-->
+            <span class="thumb-info-action">
+              <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-search"></i></span>
+            </span>
+        </a>
+      </div>
+    </li>
+</xsl:for-each>
+
+  </ul>
+</replace>
+
 
 
     </rules>
