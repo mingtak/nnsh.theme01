@@ -8,8 +8,8 @@
 
         <theme href="porto/diazo_index.html" />
         <rules if-not-path="@@preview_theme">
-            <notheme if="$show_border" />
-            <notheme if="$is_manager" />
+          <rules if="$show_border"><notheme /></rules>
+          <rules if="$is_manager"><notheme /></rules>
         </rules>
         <rules css:if-content="div.template-add_edit-form">
             <notheme css:if-content="div.template-add-form" />
@@ -23,6 +23,7 @@
             <drop css:content="div#portal-footer-wrapper div.form" />
             <drop css:content="div#nnsh-slide" />
         </rules>
+
 
         <!-- Replace title with Plone's page title  -->
         <replace css:theme="html head title" css:content="html head title" />
@@ -230,39 +231,31 @@
             </ul>
           </replace>
 
-<!-- album list-->
-<replace css:content="div.album_list">
-<h3><xsl:value-of select="./h3" /></h3>
-
-  <ul class="portfolio-list sort-destination lightbox"
-      data-sort-id="portfolio"
-      data-plugin-options='{{"delegate": "a", "type": "image", "gallery": {{"enabled": true}}}}'>
-   <xsl:for-each select=".//img">
-    <li class="col-md-4 isotope-item websites">
-      <div class="portfolio-item img-thumbnail">
-        <a href="img/projects/project.jpg" class="thumb-info">
-          <xsl:attribute name="href">
-            <xsl:value-of select="./@short_src" />
-          </xsl:attribute>
-          <img alt="" class="img-responsive" src="img/projects/project.jpg">
-            <xsl:attribute name="alt"><xsl:value-of select="./@alt" /></xsl:attribute>
-            <xsl:attribute name="title"><xsl:value-of select="./@title" /></xsl:attribute>
-            <xsl:attribute name="src"><xsl:value-of select="./@src" /></xsl:attribute>
-          </img>
-<!--            <span class="thumb-info-title">
-              <span class="thumb-info-inner"><xsl:value-of select="./@title" /></span>
-              <span class="thumb-info-type">Website</span>
-            </span>-->
-            <span class="thumb-info-action">
-              <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-search"></i></span>
-            </span>
-        </a>
-      </div>
-    </li>
-</xsl:for-each>
-
-  </ul>
-</replace>
+        <!-- album list-->
+        <replace css:content="div.album_list">
+          <h3><xsl:value-of select="./h3" /></h3>
+          <ul class="portfolio-list sort-destination lightbox"
+              data-sort-id="portfolio"
+              data-plugin-options='{{"delegate": "a", "type": "image", "gallery": {{"enabled": true}}}}'>
+            <xsl:for-each select=".//img">
+              <li class="col-md-4 isotope-item websites">
+                <div class="portfolio-item img-thumbnail">
+                  <a href="img/projects/project.jpg" class="thumb-info">
+                    <xsl:attribute name="href"><xsl:value-of select="./@short_src" /></xsl:attribute>
+                    <img alt="" class="img-responsive" src="img/projects/project.jpg">
+                      <xsl:attribute name="alt"><xsl:value-of select="./@alt" /></xsl:attribute>
+                      <xsl:attribute name="title"><xsl:value-of select="./@title" /></xsl:attribute>
+                      <xsl:attribute name="src"><xsl:value-of select="./@src" /></xsl:attribute>
+                    </img>
+                    <span class="thumb-info-action">
+                      <span title="Universal" href="#" class="thumb-info-action-icon"><i class="icon icon-search"></i></span>
+                    </span>
+                  </a>
+                </div>
+              </li>
+            </xsl:for-each>
+          </ul>
+        </replace>
 
 
 
