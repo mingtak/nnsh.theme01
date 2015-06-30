@@ -40,6 +40,15 @@
             <xsl:apply-templates />
           </replace>
 
+        <!-- search form -->
+        <after theme-children="//ul[@id='navigation']">
+          <li class="search hoverable last-child">
+            <form class="clearfix" action="/@@search" method="get">
+              <p><input type="text" class="form-control search" name="SearchableText" id="q" placeholder="Search..." /></p>
+            </form>
+          </li>
+        </after>
+
         <!-- slide -->
         <replace css:theme-children="div.meteor-vslider.slider-core ul.slides" css:content="div#nnsh-slide img" />
         <drop css:theme="section.block.fullwidth" if="$get_type != 'WebProfile'"/>
