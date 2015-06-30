@@ -75,17 +75,19 @@
               <div class="post-content">
 
                 <!-- dd 轉 ul list -->
-                <ul class="nostyle special icon-list">
-                  <xsl:for-each css:select="dd.portletItem">
-                    <li>
-                      <i class="list-icon icon-ok accent" style="font-size: 85% !important;"></i> 
-                      <a>
-                        <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
-                        <xsl:value-of select=".//a" />
-                      </a>
-                    </li>
-                  </xsl:for-each>
-                </ul>
+                <xsl:if test=".//dd[2]">
+                  <ul class="nostyle special icon-list">
+                    <xsl:for-each css:select="dd.portletItem">
+                      <li>
+                        <i class="list-icon icon-ok accent" style="font-size: 85% !important;"></i> 
+                        <a>
+                          <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
+                          <xsl:value-of select=".//a" />
+                        </a>
+                      </li>
+                    </xsl:for-each>
+                  </ul>
+                </xsl:if>
 
                 <!-- ad portlet -->
                 <xsl:for-each select=".//dd[@class = 'ad-portlet']">
@@ -124,8 +126,9 @@
 
 
         <!-- banner ad -->
-        <before css:theme-children="div.col-md-9" css:content-children="div#nnsh_ad" />
+        <before css:theme-children="div.post-listing.span8" css:content-children="div#nnsh_ad" />
 
+<!--以上完成，以下未完-->
         <!-- infomation (portal message) -->
         <before css:theme-children="div.col-md-9" css:content="dl.portalMessage" />
         <drop css:content="#kssPortalMessage" />

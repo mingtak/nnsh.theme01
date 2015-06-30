@@ -77,17 +77,19 @@
               <div class="toggle-content">
 
                 <!-- dd 轉 ul list -->
-                <ul class="nav nav-list primary push-bottom">
-<!--                  <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']"> -->
-                  <xsl:for-each css:select="dd.portletItem">
-                    <li>
-                      <a>
-                        <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
-                        <xsl:value-of select=".//a" />
-                      </a>
-                    </li>
-                  </xsl:for-each>
-                </ul>
+                <xsl:if test=".//dd[2]">
+                  <ul class="nav nav-list primary push-bottom">
+  <!--                  <xsl:for-each select=".//dd[@class != 'portletFooter' and @class != 'ad-portlet']"> -->
+                    <xsl:for-each css:select="dd.portletItem">
+                      <li>
+                        <a>
+                          <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
+                          <xsl:value-of select=".//a" />
+                        </a>
+                      </li>
+                    </xsl:for-each>
+                  </ul>
+                </xsl:if>
 
                 <!-- ad portlet -->
                 <xsl:for-each select=".//dd[@class = 'ad-portlet']">
