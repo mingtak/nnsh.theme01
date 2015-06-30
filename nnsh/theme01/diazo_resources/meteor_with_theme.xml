@@ -223,60 +223,35 @@
               </div>
             </div>
         </after>
-<!--
-        <replace css:theme="body header div.container nav.contactus ul" css:content="#portal-personaltools"/>
-          <replace css:content="#portal-personaltools">
-            <ul class="nav nav-pills nav-top">
-              <xsl:for-each select=".//li">
-                <li>
-                  <a href=''>
-                    <xsl:attribute name="href"><xsl:value-of select="./a/@href" /></xsl:attribute>
-                    <i class="icon icon-angle-right" /><xsl:value-of select="./a" />
-                  </a>
-                </li>
-              </xsl:for-each>
-            </ul>
-          </replace>
--->
 
         <!-- album list-->
         <replace css:content="div.album_list">
-          <h3><xsl:value-of select="./h3" /></h3>
-
-            <div class="meteor-posts meteor-gallery standalone" data-columns="4"
-                 data-permalink="true" data-lightbox="true" data-gallery="true" data-click-behavior="lightbox">
-<xsl:for-each select="./div[@class='imagelisting']/img[(position() mod 3) = 1 ]">
-<xsl:variable name="index" select="position()" />
-
-              <div class="row-fluid">
-<xsl:for-each select="../img[$index] | ../img[$index+1] | ../img[$index+2]">
-                <div class="item inner span4">
-                  <div class="frame">
-                    <a href="static/image.png">
-<xsl:attribute name="href"><xsl:value-of select="current()/@short_src" /></xsl:attribute>
-                      <img alt="Changshu Road"  src="static/img-780x482.png">
-<xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
-                      </img>
-                    </a>
-                  </div><!-- .frame -->
-                  <div class="meta text-center">
-                    <h3>
-                         
-                        <i class="icon-building"></i><xsl:value-of select="current()/@title" /></h3>
-                    <small class="desc"><xsl:value-of select="current()/@alt" /></small>
-                  </div>
-                </div><!-- .item -->
-</xsl:for-each>
-              </div><!-- .row-fluid -->
-</xsl:for-each>
-            </div><!-- .meteor-gallery -->
-
-
-
-
-
+          <div class="meteor-posts meteor-gallery standalone" data-columns="4"
+               data-permalink="true" data-lightbox="true" data-gallery="true" data-click-behavior="lightbox">
+            <xsl:for-each select="./div[@class='imagelisting']/img">
+              <xsl:if test="position() mod3 = 1">
+                <xsl:variable name="index" select="position()" />
+                <div class="row-fluid">
+                  <xsl:for-each select="../img[$index] | ../img[$index+1] | ../img[$index+2]">
+                    <div class="item inner span4">
+                      <div class="frame">
+                        <a href="static/image.png">
+                          <xsl:attribute name="href"><xsl:value-of select="current()/@short_src" /></xsl:attribute>
+                          <img alt="Changshu Road"  src="static/img-780x482.png">
+                            <xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
+                          </img>
+                        </a>
+                      </div><!-- .frame -->
+                      <div class="meta text-center">
+                        <h3><i class="icon-building"></i><xsl:value-of select="current()/@title" /></h3>
+                        <small class="desc"><xsl:value-of select="current()/@alt" /></small>
+                      </div>
+                    </div><!-- .item -->
+                  </xsl:for-each>
+                </div><!-- .row-fluid -->
+              </xsl:if>
+            </xsl:for-each>
+          </div><!-- .meteor-gallery -->
         </replace>
-
-
 
 </rules>
