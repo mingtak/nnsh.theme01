@@ -11,4 +11,9 @@
     <rules if="$themeid = 'porto'">
         <xi:include href="porto.xml" />
     </rules>
+
+    <rules if="$themeid = 'meteor'">
+        <xi:include href="meteor.xml" />
+    </rules>
+
 </rules>

@@ -43,6 +43,7 @@
         <!-- slide -->
         <replace css:theme-children="div#revolutionSlider ul" css:content="div#nnsh-slide img" />
         <drop css:theme="div#content div.slider-container" if="$get_type != 'WebProfile'"/>
+        <drop css:theme="div.home-intro" if-not-path="/" />
           <replace css:content="div#nnsh-slide img">
             <li data-transition="fade" data-slotamount="13" data-masterspeed="300" >
               <img src="img/slides/slide-bg.jpg" data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
