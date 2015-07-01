@@ -29,7 +29,7 @@ $(window).load(function() {
 
 //pretty photo
 jQuery(document).ready(function(){
-        jQuery("a[rel^='prettyPhoto']").prettyPhoto({animationSpeed:'slow',theme:'dark_rounded',slideshow:false,overlay_gallery: false,social_tools:false,deeplinking:false});
+        jQuery("a[rel^='prettyPhoto']").prettyPhoto({animationSpeed:'slow',theme:'light_rounded',slideshow:false,overlay_gallery: false,social_tools:false,deeplinking:false});
 });  
 
 		

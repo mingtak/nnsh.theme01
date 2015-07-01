@@ -344,7 +344,7 @@ hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
-  border-top: 1px solid #2f2f2f;
+  border-top: 1px solid #eeeeee;
 }
 .sr-only {
   position: absolute;
@@ -1354,7 +1354,7 @@ th {
   padding: 5px;
 }
 .table-bordered {
-  border: 1px solid #545454;
+  border: 1px solid #EFEFEF;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > tbody > tr > th,
@@ -1362,7 +1362,7 @@ th {
 .table-bordered > thead > tr > td,
 .table-bordered > tbody > tr > td,
 .table-bordered > tfoot > tr > td {
-  border: 1px solid #545454;
+  border: 1px solid #EFEFEF;
 }
 .table-bordered > thead > tr > th,
 .table-bordered > thead > tr > td {
@@ -14582,7 +14582,6 @@ i[class^="icon-animation-"] {
 .bootstrap-select.btn-group .dropdown-menu li > a {
   min-height: 20px;
   cursor: pointer;
-  color:#ffffff;
 }
 .bootstrap-select.btn-group .dropdown-menu li > dt small {
   font-weight: normal;
@@ -15386,7 +15385,7 @@ i[class^="icon-animation-"] {
     display: inline-block;
     position: absolute;
     right: 15px;
-    margin-top: 0px;
+    margin-top: 2.5px;
 }
 
 .bootstrap-select.btn-group .dropdown-menu li a i.check-mark {
@@ -15417,12 +15416,12 @@ i[class^="icon-animation-"] {
     display: inline-block;
     border-left: 7px solid transparent;
     border-right: 7px solid transparent;
-    border-bottom: 7px solid #545454;
+    border-bottom: 7px solid #CCC;
     border-bottom-color: rgba(0, 0, 0, 0.2);
     position: absolute;
-    bottom: 0px;
+    bottom: -4px;
     left: 9px;
-    display: none !important;
+    display: none;
 }
 
 .bootstrap-select.show-menu-arrow .dropdown-toggle:after {
@@ -15430,33 +15429,28 @@ i[class^="icon-animation-"] {
     display: inline-block;
     border-left: 6px solid transparent;
     border-right: 6px solid transparent;
-    border-bottom: 6px solid #545454;
+    border-bottom: 6px solid white;
     position: absolute;
-    bottom: 0px;
+    bottom: -4px;
     left: 10px;
-    display: none !important;
+    display: none;
 }
 
 .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:before {
   bottom: auto;
-  top: 0px;
-  border-top: 7px solid #545454;
+  top: -3px;
+  border-top: 7px solid #ccc;
   border-bottom: 0;
   border-top-color: rgba(0, 0, 0, 0.2);
-      display: none !important;
-
 }
 
 .bootstrap-select.show-menu-arrow.dropup .dropdown-toggle:after {
   bottom: auto;
-  top: 0px;
-  border-top: 6px solid #545454;
+  top: -3px;
+  border-top: 6px solid #ffffff;
   border-bottom: 0;
-    display: none !important;
-
 }
 
-.bootstrap-select .btn {background:#363636 !important; color:#ADBDC6;border-color:#222222; text-shadow:none}
 .bootstrap-select.show-menu-arrow.pull-right .dropdown-toggle:before {
     right: 12px;
     left: auto;
@@ -15473,7 +15467,7 @@ i[class^="icon-animation-"] {
 
 .bootstrap-select.btn-group .no-results {
     padding: 3px;
-    background: #545454;
+    background: #f5f5f5;
     margin: 0 5px;
 }
 
@@ -15502,7 +15496,7 @@ i[class^="icon-animation-"] {
 }
 
 .control-group.error .bootstrap-select .dropdown-toggle{
-    border-color: #545454;
+    border-color: #b94a48;
 }
 
 .bootstrap-select-searchbox {

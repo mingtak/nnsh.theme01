@@ -7,6 +7,9 @@
 
     <!-- Apply the following rules to standard Plone pages -->
 
+    <rules if="$themeid = 'jollyness'">
+        <xi:include href="jollyness.xml" />
+    </rules>
 
     <rules if="$themeid = 'porto'">
         <xi:include href="porto.xml" />

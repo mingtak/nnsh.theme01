@@ -7,6 +7,7 @@
 
     <rules css:if-content="#visual-portal-wrapper">
 
+<!-- here must be change theme path, total 3. -->
         <theme href="meteor/diazo_index.html" />
         <rules if-path="@@preview_theme"><xi:include href="/++theme++nnsh.theme01/meteor_with_theme.xml" /></rules>
         <rules css:if-not-content="div.template-add_edit-form">
