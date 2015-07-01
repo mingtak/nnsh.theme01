@@ -64,6 +64,9 @@
                   </img>
               </li>
           </replace>
+          <replace css:theme-children="div.meteor-vslider.slider-core a h3">
+            <xsl:value-of select="//div[@id='nnsh-slide']//img[1]/@alt"/>
+          </replace>
 
 
         <!-- Nav -->
@@ -169,10 +172,11 @@
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-
+<!--
           <replace content="//div[@id='content-core']//ul[not(@class='list')]//li">
             <xsl:copy>
               <i class="icon icon-chevron-right" style="margin-right:5px" />
+              <xsl:attribute name="class">nostyle special icon-list</xsl:attribute>
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
@@ -183,7 +187,7 @@
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-
+-->
         <!-- footer blocks -->
         <replace theme-children="//footer/div[@class='container']/div[@class='row']" css:content="div#nnsh-blocks" />
 
@@ -200,6 +204,7 @@
         <!-- copyright -->
         <replace css:theme-children="div.bottom-bar div.container p"
                  css:content-children="div#portal-footer" />
+        <drop css:theme="div.bottom-bar div.container ul" />
 
         <!-- subscribe -->
         <drop css:theme="section#twitter-bar" />
