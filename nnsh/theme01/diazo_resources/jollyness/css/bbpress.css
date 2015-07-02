@@ -23,7 +23,7 @@ body.bbPress #page .forum-widgets .forum-widget ul li a.bbp-author-name{padding:
 #bbpress-forums li.bbp-header .bbp-reply-content span a{font-weight:normal;text-decoration:none;font-size:12px!important}
 #bbpress-forums ul li ul.forum-titles li{text-transform:uppercase}
 #bbpress-forums ul li ul.forum-titles li.bbp-forum-freshness{position:relative;}
-#bbpress-forums li.bbp-body ul.forum{padding:20px!important}
+/* #bbpress-forums li.bbp-body ul.forum{padding:20px!important} */
 #bbpress-forums li.bbp-body ul.forum li.bbp-forum-info{margin-top:5px}
 #bbpress-forums li.bbp-body ul.forum li.bbp-forum-info a{font-size:18px;color:#292723;text-decoration:none;font-weight:normal}
 #bbpress-forums li.bbp-body ul.forum li.bbp-forum-info .bbp-forum-content p{font-style:normal!important;font-size:14px !important;color:#ADBDC6;margin-top:0px!important;padding:0 0 10px 0!important}
@@ -218,7 +218,7 @@ li.bbp-forum-info,
 li.bbp-topic-title {
 	float: left;
 	text-align: left;
-	width: 55%;
+/*	width: 55%; */
 }
 li.bbp-forum-topic-count,
 li.bbp-topic-voice-count,
