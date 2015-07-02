@@ -22,62 +22,77 @@
 
         <!-- drop down menu(nav) -->
 <!--        <drop css:theme="div.social-icons" /> -->
-        <replace theme-children="//ul[@id='navigation']" content-children="//ul[@id='portal-globalnav']" />
+        <replace theme-children="//div[@id='defaultmenu']/ul[@class='nav navbar-nav']" content-children="//ul[@id='portal-globalnav']" />
           <replace content-children="//ul[@id='portal-globalnav']/li[@class='selected']">
             <xsl:attribute name="class">dropdown active</xsl:attribute>
             <xsl:apply-templates />
           </replace>
           <replace content-children="//ul[@id='portal-globalnav']/li[@class='plain']">
-            <xsl:attribute name="class">dropdown</xsl:attribute>
+            <xsl:attribute name="class">adropdown</xsl:attribute>
             <xsl:apply-templates />
           </replace>
-          <replace content-children="//ul[@id='portal-globalnav']/li/a">
+<!--          <replace content-children="//ul[@id='portal-globalnav']/li/a">
             <xsl:attribute name="class">dropdown-toggle</xsl:attribute>
             <xsl:apply-templates />
           </replace>
+-->
           <replace content-children="//ul[@id='portal-globalnav']/li/ul">
             <xsl:attribute name="class">dropdown-menu</xsl:attribute>
             <xsl:apply-templates />
           </replace>
 
         <!-- search form -->
-        <after theme-children="//ul[@id='navigation']">
-          <li class="search hoverable last-child">
-            <form class="clearfix" action="/@@search" method="get">
-              <p><input type="text" class="form-control search" name="SearchableText" id="q" placeholder="Search..." /></p>
-            </form>
-          </li>
-        </after>
+        <replace theme="//ul[@class='nav navbar-nav navbar-right']">
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+              <div id="dmsearch" class="dmsearch">
+                <form id="searchform" action="/@@search" method="get">
+                  <div class="dm-search-container">
+                    <input id="s" class="dmsearch-input" type="text" name="SearchableText" value="" placeholder="Search on this site" />
+                  </div>
+                  <input id="go" class="dmsearch-submit" type="submit" value="" />
+                  <span class="searchicon"></span>
+                </form> <!-- end searchform -->
+              </div><!-- end search -->
+            </li>
+          </ul>
+        </replace>
 
         <!-- slide -->
-        <replace css:theme-children="div.meteor-vslider.slider-core ul.slides" css:content="div#nnsh-slide img" />
-        <drop css:theme="section.block.fullwidth" if="$get_type != 'WebProfile'"/>
+        <replace css:theme-children="section.sliderwrapper ul" css:content="div#nnsh-slide img" />
+        <drop css:theme="section.sliderwrapper" if="$get_type != 'WebProfile'"/>
 <!--        <drop css:theme="div.home-intro" if-not-path="/" /> -->
           <replace css:content="div#nnsh-slide img">
-              <li data-title="show text data" data-uri="#slide-1">
-                  <xsl:attribute name="data-title"><xsl:value-of select="./@alt"/></xsl:attribute>
-                  <xsl:attribute name="data-uri">#slide-<xsl:value-of select="position()"/></xsl:attribute>
-                  <img alt="" src="static/img-1600x566.png">
-                      <xsl:attribute name="src"><xsl:value-of select="./@src"/></xsl:attribute>
-                      <xsl:attribute name="alt"><xsl:value-of select="./@alt"/></xsl:attribute>
-                      <xsl:attribute name="title"><xsl:value-of select="./@alt"/></xsl:attribute>
-                  </img>
-              </li>
+            <li data-transition="fade" data-slotamount="7" data-masterspeed="1500" >
+              <img src="slider-images/01_bg.jpg"  alt="slidebg1"  data-bgfit="cover" data-bgposition="left top" data-bgrepeat="no-repeat">
+                <xsl:attribute name="src"><xsl:value-of select="./@src"/></xsl:attribute>
+                <xsl:attribute name="alt"><xsl:value-of select="./@alt"/></xsl:attribute>
+                <xsl:attribute name="title"><xsl:value-of select="./@alt"/></xsl:attribute>
+              </img>
+              <div class="tp-caption new_title skewfromleft customout"
+                   data-x="center" data-hoffset="0"
+                   data-y="230"
+                   data-customout="x:0;y:0;z:0;rotationX:0;rotationY:0;rotationZ:0;scaleX:0.75;scaleY:0.75;skewX:0;skewY:0;opacity:0;transformPerspective:600;transformOrigin:50% 50%;"
+                   data-speed="800"
+                   data-start="1500"
+                   data-easing="Power4.easeOut"
+                   data-endspeed="300"
+                   data-endeasing="Power1.easeIn"
+                   data-captionhidden="on"
+                   style="z-index: 6">
+                <xsl:value-of select="./@alt"/>
+              </div>
+            </li>
           </replace>
-          <replace css:theme-children="div.meteor-vslider.slider-core a h3">
-            <xsl:value-of select="//div[@id='nnsh-slide']//img[1]/@alt"/>
-          </replace>
-
 
         <!-- Nav -->
-        <drop css:theme="section#section-title" if="$get_type = 'WebProfile'" />
-        <drop css:theme="section#section-title small" />
-        <replace css:theme-children="section#section-title h1" content-children="//div[@id='content']/h1" />
-        <replace css:theme-children="section#section-title div.breadcrumb div.container"
-               css:content="div#portal-breadcrumbs" />
+        <drop css:theme="section.post-wrapper-top.dm-shadow.clearfix" if="$get_type = 'WebProfile'" />
+        <replace css:theme-children="section.post-wrapper-top.dm-shadow.clearfix h2" content-children="//div[@id='content']/h1" />
+        <replace css:theme-children="section.post-wrapper-top.dm-shadow.clearfix ul"
+                 css:content="div#portal-breadcrumbs" />
 
         <!-- sidebar -->
-        <replace css:theme-children="div.sidebar.span4" css:content-children="div#portal-column-one" />
+        <replace css:theme-children="div#sidebar" css:content-children="div#portal-column-one" />
         <drop css:content="div#portal-column-two" />
 
           <!-- portlet use dd tag -->
