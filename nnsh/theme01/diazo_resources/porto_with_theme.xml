@@ -127,7 +127,27 @@
 
 
         <!-- banner ad -->
-        <before css:theme-children="div.col-md-9" css:content-children="div#nnsh_ad" />
+        <before css:theme-children="div.col-md-9" css:content="div#nnsh_ad" />
+        <replace css:content="div#nnsh_ad ">
+          <div class="row">
+            <xsl:for-each select="//div[@id='nnsh_ad']/a">
+              <div class="col-md-4">
+                <a target="_blank" alt="Banner" title="Banner">
+                  <xsl:attribute name="href"><xsl:value-of select="./@href" /></xsl:attribute>
+                  <img alt="Banner" title="Banner">
+                    <xsl:attribute name="style">width:100%</xsl:attribute>
+                    <xsl:attribute name="src"><xsl:value-of select="./img/@src" /></xsl:attribute>
+                  </img>
+                </a>
+              </div>
+            </xsl:for-each>
+          </div>
+          <br />
+        </replace>
+
+
+
+
 
         <!-- infomation (portal message) -->
         <before css:theme-children="div.col-md-9" css:content="dl.portalMessage" />
@@ -172,6 +192,9 @@
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
+
+        <!-- download file -->
+        <after css:theme-children="div.col-md-9" css:content="div.download_file" />
 
         <!-- footer blocks -->
         <replace theme-children="//footer/div[@class='container']/div[@class='row']" css:content="div#nnsh-blocks" />
