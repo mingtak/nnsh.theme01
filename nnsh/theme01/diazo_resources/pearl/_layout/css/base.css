@@ -270,8 +270,7 @@
 	
 	a, 
 	a:visited { 
-	/*	color: #ea6872;  */
-                color: #fff;
+		color: #ea6872;  
 		text-decoration: none; 
 	}
 	

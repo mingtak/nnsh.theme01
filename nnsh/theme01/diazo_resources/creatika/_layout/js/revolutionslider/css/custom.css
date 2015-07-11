@@ -1,0 +1,103 @@
+.fullwidthbanner-container {
+    max-height: 600px !important;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    width: 100% !important;
+	margin-bottom: 60px;
+}
+
+.fullwidthbanner-container ul{ list-style:none; }
+
+.caption.headline {
+	padding-bottom: 30px;
+	color: #fff;
+	font-size: 72px;
+	line-height: 50px;
+	text-align: center;
+}
+
+.caption.headline:before,
+.caption.headline:after { border-top: 2px solid #fff; }
+	
+.caption.headline span.bullet:before {
+	bottom: -24px;
+	color: #fff;
+	font-size: 11px;
+}
+	
+.caption.title { 
+	color: #fff;
+	font-size: 48px;
+	line-height: 72px;
+}
+
+.caption.sub-title { 
+	color: #fff;
+	font-size: 22px;
+	line-height: 40px;
+}
+
+.caption.text { 
+	color: #fff;
+	font-size: 16px;
+	line-height: 30px;
+}
+
+.caption.text a { color: #fff; }
+
+.tp-bullets.simplebullets.round .bullet {
+	width: 11px;
+	height: 11px;
+	border-radius: 50%;
+	margin: -10px 5px 0 5px;
+    background: #4b575a;
+}
+
+.tp-bullets.simplebullets.round .bullet.selected,
+.tp-bullets.simplebullets.round .bullet:hover { background: #6dd24e; }
+
+.border-img {
+	overflow: hidden;
+	border: 5px solid #a0b1ae;
+	-webkit-border-radius: 50%;
+			border-radius: 50%;
+}
+
+.border-img img { display: block; }
+
+.border-color-1 { border-color: #a0b1ae; }
+.border-color-2 { border-color: #6dd24e; }
+.border-color-3 { border-color: #4b575a; }
+
+.caption i { font-size: 72px; }
+.caption.color-1 i { color: #a0b1ae; }
+.caption.color-2 i { color: #6dd24e; }
+
+@media (min-width: 768px) and (max-width: 979px) {
+	
+	.caption i { font-size: 64px; }
+	
+	.caption.headline span.bullet:before { bottom: -15px; }
+	
+}
+
+@media (max-width: 767px) {
+	
+	.tp-leftarrow.default,
+	.tp-rightarrow.default { display: none; }
+	
+	.caption.headline span.bullet:before,
+	.caption.headline:before, 
+	.caption.headline:after { content: none; }
+		
+	.caption.text a.btn { 
+		padding: 5px 10px;
+		font-size: 8px;
+	}
+	
+	.border-img { border-width: 3px; }
+	
+	.caption i { font-size: 20px; }
+}
+

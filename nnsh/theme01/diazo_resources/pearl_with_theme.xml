@@ -194,22 +194,6 @@
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-<!--
-          <replace content="//div[@id='content-core']//ul[not(@class='list')]//li">
-            <xsl:copy>
-              <i class="icon icon-chevron-right" style="margin-right:5px" />
-              <xsl:attribute name="class">nostyle special icon-list</xsl:attribute>
-              <xsl:apply-templates/>
-            </xsl:copy>
-          </replace>
-
-          <replace css:content-children="div#content-core ul li a">
-            <xsl:copy>
-              <xsl:attribute name="href"><xsl:value-of select="./@href"/></xsl:attribute>
-              <xsl:apply-templates/>
-            </xsl:copy>
-          </replace>
--->
 
         <!-- download file -->
         <after css:theme-children="div#content div.row div.span8" css:content="div.download_file" />
@@ -257,32 +241,32 @@
 	
         <!-- album list-->
         <replace css:content="div.album_list">
-          <div class="meteor-posts meteor-gallery standalone" data-columns="4"
-               data-permalink="true" data-lightbox="true" data-gallery="true" data-click-behavior="lightbox">
-            <xsl:for-each select="./div[@class='imagelisting']/img">
-              <xsl:if test="position() mod3 = 1">
-                <xsl:variable name="index" select="position()" />
-                <div class="row-fluid">
-                  <xsl:for-each select="../img[$index] | ../img[$index+1] | ../img[$index+2]">
-                    <div class="item inner span4">
-                      <div class="frame">
-                        <a href="static/image.png">
+          <ul class="portfolio-items portfolio-strip fixed">
+            <xsl:for-each select="./div/img">
+              <li class="item term-1">
+                <div class="portfolio-item">
+                  <div class="portfolio-item-preview">			
+                    <img src="_content/portfolio/385x260-1.png" alt="">
+                      <xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
+                      <xsl:attribute name="alt"><xsl:value-of select="current()/@alt" /></xsl:attribute>
+                    </img>
+                    <div class="portfolio-item-overlay">
+                      <div class="portfolio-item-overlay-actions">
+                        <a class="magnificPopup-gallery portfolio-item-zoom" href="_content/portfolio/385x260-1.png">
                           <xsl:attribute name="href"><xsl:value-of select="current()/@short_src" /></xsl:attribute>
-                          <img alt="Changshu Road"  src="static/img-780x482.png">
-                            <xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
-                          </img>
+                          <xsl:attribute name="title"><xsl:value-of select="current()/@title" /></xsl:attribute>
+                          <i class="ifc-zoom_in"></i>
                         </a>
-                      </div><!-- .frame -->
-                      <div class="meta text-center">
-                        <h3><i class="icon-building"></i><xsl:value-of select="current()/@title" /></h3>
-                        <small class="desc"><xsl:value-of select="current()/@alt" /></small>
-                      </div>
-                    </div><!-- .item -->
-                  </xsl:for-each>
-                </div><!-- .row-fluid -->
-              </xsl:if>
+                      </div><!-- end .portfolio-item-overlay-actions -->
+                    </div><!-- end .portfolio-item-overlay -->
+                  </div><!-- end .portfolio-item-preview -->
+                  <div class="portfolio-item-description">
+                    <h3><xsl:value-of select="current()/@title" /></h3>
+                  </div><!-- end .portfolio-item-description -->
+                </div><!-- end .portfolio-item -->
+              </li>
             </xsl:for-each>
-          </div><!-- .meteor-gallery -->
+          </ul>
         </replace>
 
 </rules>
