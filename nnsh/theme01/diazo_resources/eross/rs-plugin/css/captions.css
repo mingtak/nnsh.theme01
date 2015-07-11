@@ -1,0 +1,54 @@
+.tp-caption.thin_blue {
+	color:rgb(68, 191, 232);
+	font-weight:300;
+	font-family:"Open Sans";
+	font-size:36px;
+	border-width:0px;
+	border-color:rgb(68, 191, 232);
+	border-style:none;
+}
+
+.tp-caption.medium_gray {
+	color:#8e8e8e;
+	font-weight:600;
+	font-family:"Open Sans";
+	font-size:18px;
+	position:abosolute;
+	border-width:0px;
+	border-color:rgb(142, 142, 142);
+	border-style:none;
+}
+
+.tp-caption.black_text {
+	color:rgb(91, 91, 91);
+	font-weight:400;
+	font-family:"Open Sans";
+	font-size:14px;
+	border-width:0px;
+	border-color:rgb(91, 91, 91);
+	border-style:none;
+}
+
+.tp-caption.g_font {
+	color:#ffffff;
+	font-size:22px;
+	font-family:"Gloria Hallelujah";
+	border-width:0px;
+	border-color:rgb(255, 255, 255);
+	border-style:none;
+}
+
+.tp-caption.small_thin_grey {
+	font-size:18px;
+	line-height:26px;
+	font-weight:300;
+	font-family:"Open Sans";
+	color:rgb(117, 117, 117);
+	text-decoration:none;
+	background-color:transparent;
+	padding:1px 4px 0px;
+	text-shadow:none;
+	margin:0px;
+	border-width:0px;
+	border-color:rgb(255, 214, 88);
+	border-style:none;

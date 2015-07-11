@@ -8,10 +8,10 @@
     <rules css:if-content="#visual-portal-wrapper">
 
 <!-- here must be change theme path, total 3. -->
-        <theme href="creatika/diazo_index.html" />
-        <rules if-path="@@preview_theme"><xi:include href="/++theme++nnsh.theme01/creatika_with_theme.xml" /></rules>
+        <theme href="eross/diazo_index.html" />
+        <rules if-path="@@preview_theme"><xi:include href="/++theme++nnsh.theme01/eross_with_theme.xml" /></rules>
         <rules css:if-not-content="div.template-add_edit-form">
-          <rules if-not="$show_border"><xi:include href="/++theme++nnsh.theme01/creatika_with_theme.xml" /></rules>
+          <rules if-not="$show_border"><xi:include href="/++theme++nnsh.theme01/eross_with_theme.xml" /></rules>
         </rules>
 
         <rules if-not-path="@@preview_theme">

@@ -7,8 +7,12 @@
 
     <!-- Apply the following rules to standard Plone pages -->
 
-    <rules if="$themeid = 'oldal'">
-        <xi:include href="oldal.xml" />
+    <rules if="$themeid = 'eross'">
+        <xi:include href="eross.xml" />
+    </rules>
+
+    <rules if="$themeid = 'creatika'">
+        <xi:include href="creatika.xml" />
     </rules>
 
     <rules if="$themeid = 'pearl'">

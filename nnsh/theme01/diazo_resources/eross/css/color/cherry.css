@@ -1,0 +1,156 @@
+h1 a:hover,
+h2 a:hover,
+h3 a:hover,
+h4 a:hover,
+h5 a:hover,
+h6 a:hover,
+a:hover,
+#header .site-menu.style1 ul > li.current > a,
+.portfolio-page .portfolio-navigations ul li a.selected,
+.theme-color,
+.button.border,
+.button.border i,
+.callout.style1 .heading,
+.callout.style1 h4,
+.service-box.style2 .iconbox-style2,
+.blog-item .blog-media .blog-media-overlay .overlay-content{
+	color: #911938
+}
+.button,
+button,
+input[type="submit"],
+input[type="button"],
+input[type="reset"],
+.button:hover,
+.button:focus,
+button:hover,
+button:focus,
+input[type="submit"]:hover,
+input[type="button"]:hover,
+input[type="reset"]:hover,
+input[type="submit"]:focus,
+input[type="button"]:focus,
+input[type="reset"]:focus,
+.button:active,
+button:active,
+input[type="submit"]:active,
+input[type="button"]:active,
+input[type="reset"]:active,
+#header .header-search.header-search-open .header-icon-search,
+#header .responsive-menu,
+#header .site-menu ul li.current > a,
+#header .site-menu ul ul li a,
+#header .fullmenu,
+.blog-item .blog-media .blog-media-overlay .overlay-content .top-top-bottom a,
+.blog-item .blog-media .blog-media-overlay .overlay-content .top-top-bottom a:hover,
+.blog-item .post-icon,
+.blog-item .entry-share.active,
+.blog-item .entry-share:hover,
+.relate-post .post-image .post-icon,
+.enews-widget,
+.tags.widget a:hover,
+.portfolio.widget .portfolio-short-item .portfolio-overlay-content a,
+.portfolio-item.active .portfolio-info .portfolio-short-content,
+.portfolio-item .portfolio-overlay-content a,
+.portfolio-navigations.style-2 li a,
+.product-item.active .product-info .product-short-content,
+.product-item .product-overlay-content a,
+#product-detail .product-amount span,
+.horizontal-icon .icon,
+.title-block .line,
+.accordion .accordion-title a,
+.button,
+.tabs .tabNavigation li.active a,
+.service-box .iconbox-style1,
+.service-box .iconbox-style1 .inner,
+.icon-box .square-icon,
+.callout.color .inner,
+.callout.style3,
+.testimonial.alternative .testimonial-content,
+.testimonialslide .slides li,
+.skill-bar .skill-bar-content,
+.infobox.style2 figcaption,
+.title-icon .icon,
+.caroufredselnavi a:hover,
+.leftside li.active a,
+.leftside li:hover a,
+.leftside li a:hover,
+.pagenavi ul li span,
+.shortpost:hover .post-content,
+.infobox:hover .infobox-content,
+.callout.color,
+.timeline .event:after,
+.flexslider .flex-control-nav li a.flex-active,
+.flexslider .flex-control-nav li a:hover,
+#jPanelMenu-menu ul li:hover>a,
+#jPanelMenu-menu ul li:hover>span,
+#jPanelMenu-menu ul li.active>a,
+#jPanelMenu-menu ul li.active>span,
+#jPanelMenu-menu ul li.sidr-class-active>a,
+#jPanelMenu-menu ul li.sidr-class-current>a,
+#jPanelMenu-menu ul li.sidr-class-active>span,
+#jPanelMenu-menu ul li ul li:hover>a,
+#jPanelMenu-menu ul li ul li:hover>span,
+#jPanelMenu-menu ul li ul li.active>a,
+#jPanelMenu-menu ul li ul li.active>span,
+#jPanelMenu-menu ul li ul li.sidr-class-active>a,
+#jPanelMenu-menu ul li ul li.sidr-class-active>span{
+	background-color: #911938
+}
+.testimonialslide .slides li:before{
+	border-top-color: #911938
+}
+#header .site-menu ul ul:before,
+.heading-style1 span,
+.product-item.active .product-info .product-short-content:before,
+.portfolio-item.active .portfolio-info .portfolio-short-content:before{
+	border-bottom-color: #911938
+}
+.leftside li.active:after,
+.leftside li:hover:after,
+.tabs.left.alternative .tabNavigation li.active:after{
+	border-left-color: #911938
+}
+.tabs.right.alternative .tabNavigation li.active:after{
+	border-right-color: #911938
+}
+#header .site-menu.style1 ul > li.current > a,
+.blog-item .entry-share.active,
+.blog-item .entry-share:hover,
+.portfolio-page .portfolio-navigations ul li a.selected,
+.button.border,
+.button.border i,
+.team:hover .team-avatar,
+.testimonialslide .flex-control-thumbs li img.flex-active,
+.shortpost:hover .post-content,
+.infobox:hover .infobox-content,
+.colorborder,
+.border-image:hover{
+	border-color: #911938
+}
+#header .site-menu ul > li > a:hover,
+#header .site-menu ul ul li.sfHover > a,
+#header .site-menu ul ul li a:hover,
+#header .site-menu.style1 ul li ul li a:hover,
+#header .site-menu.style1 ul ul > li.current > a,
+#header .site-menu.style1 ul ul > li.sfHover > a,
+#header .fullmenu.style1 .site-menu ul > li > a:hover,
+#header .fullmenu.style1 .site-menu ul li.current > a,
+#header .fullmenu.style1 .site-menu .sf-menu ul > li > a:hover,
+#header .fullmenu.style1 .site-menu .sf-menu ul li.current > a,
+.pagenavi ul li a:hover{
+	background: #a63955
+}
+#header .fullmenu.style1 .sf-menu{
+	border-left: 1px solid #a63955
+}
+#header .fullmenu.style1 .sf-menu > li{
+	border-right: 1px solid #a63955;
+	border-left: 1px solid #a63955
+}
+.button i{
+	background: #7a1c34;
+}
+.button i:after{
+	border-right-color: #7a1c34;
+}
