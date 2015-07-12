@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+    <rules css:if-content="#visual-portal-wrapper">
+
+<!-- here must be change theme path, total 3. -->
+        <theme href="norma/diazo_index.html" />
+        <rules if-path="@@preview_theme"><xi:include href="/++theme++nnsh.theme01/norma_with_theme.xml" /></rules>
+        <rules css:if-not-content="div.template-add_edit-form">
+          <rules if-not="$show_border"><xi:include href="/++theme++nnsh.theme01/norma_with_theme.xml" /></rules>
+        </rules>
+
+        <rules if-not-path="@@preview_theme">
+          <rules if="$show_border"><notheme /></rules>
+          <rules if="$is_manager"><notheme /></rules>
+        </rules>
+        <rules css:if-content="div.template-add_edit-form">
+            <notheme css:if-content="div.template-add-form" />
+            <notheme css:if-content="div.template-edit-form" />
+            <drop css:content="div#portal-footer-wrapper div.form" />
+            <drop css:content="div#nnsh-blocks" />
+            <drop css:content="div#nnsh-slide" />
+        </rules>
+        <rules if="$show_border">
+            <drop css:content="div#nnsh-blocks" />
+            <drop css:content="div#portal-footer-wrapper div.form" />
+            <drop css:content="div#nnsh-slide" />
+        </rules>
+
+
+    </rules>
+
+</rules>
