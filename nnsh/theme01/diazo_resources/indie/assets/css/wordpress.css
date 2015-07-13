@@ -821,7 +821,7 @@
 	}
 	
 	.widget_categories a:before {
-		position: absolute;
+/* 		position: absolute; */
 		top: 0px;
 		left: 30px;
 		font-family: "FontAwesome";

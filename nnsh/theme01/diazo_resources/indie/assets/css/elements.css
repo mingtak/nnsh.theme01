@@ -212,10 +212,17 @@
    ========================================================================== */
 	
 	a, 
+
+        #portal-breadcrumbs a:visited { 
+                color: #64768b;
+                text-decoration: none; 
+        }
+
 	a:visited { 
-		color: #24bee8; 
+		color: #24bee8;
 		text-decoration: none; 
 	}
+
 	
    /**
 	* 1. Remove the gray background color from active links in IE 10.

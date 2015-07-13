@@ -17,8 +17,8 @@
 <!--        <after css:theme="body p" css:content="#visual-portal-wrapper" /> -->
 
         <!-- logo -->
-        <copy css:theme="a#logo" css:content="a#portal-logo" attributes="href title alt"/>
-        <copy css:theme="a#logo img" css:content="a#portal-logo img" attributes="src alt title" />
+        <copy css:theme="div#logo a" css:content="a#portal-logo" attributes="href title alt"/>
+        <copy css:theme="div#logo a img" css:content="a#portal-logo img" attributes="src alt title" />
 
         <!-- drop down menu(nav) -->
 <!--        <drop css:theme="div.social-icons" /> -->
@@ -52,21 +52,19 @@
         <drop css:theme="div#content div.fullwidthbanner" if="$get_type != 'WebProfile'"/>
 <!--        <drop css:theme="div.home-intro" if-not-path="/" /> -->
           <replace css:content="div#nnsh-slide img">
-            <li data-transition="fade">
-              <img src="_content/slider/1920x500-2.jpg" alt="">
+
+            <li data-transition="fade">                    
+              <img src="_content/slider/1920x680-2.jpg" alt="">
                 <xsl:attribute name="src"><xsl:value-of select="./@src"/></xsl:attribute>
                 <xsl:attribute name="alt"><xsl:value-of select="./@alt"/></xsl:attribute>
                 <xsl:attribute name="title"><xsl:value-of select="./@alt"/></xsl:attribute>
               </img>
-              <div class="caption text sfl" 
-                   data-x="190"  
-                   data-y="170" 
-                   data-speed="700" 
-                   data-start="1000" 
-                   data-easing="easeOutBack">
-                <h2 class="text-uppercase"><strong><xsl:value-of select="./@alt"/></strong></h2>
-              </div>  
+              <div class="tp-caption sfr revolution-style-custom-2"
+                   data-x="13" data-y="240" data-speed="600" data-start="2000" data-easing="easeOutExpo">
+                <xsl:value-of select="./@alt"/>
+              </div>
             </li>
+
           </replace>
 
 
@@ -74,26 +72,24 @@
         <drop css:theme="div#page-header" if="$get_type = 'WebProfile'" />
 <!--        <drop css:theme="section#section-title small" /> -->
 <!--        <before css:theme-children="div#content div.row div.span8" content="//div[@id='content']/h1" /> -->
-        <replace css:theme-children="div#page-header h3"
+        <replace css:theme-children="div#page-header h5"
                  css:content="div#portal-breadcrumbs" />
 
         <!-- sidebar -->
-        <replace css:theme-children="div#content div.row div.span4" css:content-children="div#portal-column-one" />
+        <replace css:theme-children="div#content div.span3" css:content-children="div#portal-column-one" />
         <drop css:content="div#portal-column-two" />
 
-<!-- 以下未改 -->
           <!-- portlet use dd tag -->
           <replace css:content="div.portletWrapper">
-            <div class="meteor-toggle large" data-expanded="true">
-              <h3><span><xsl:value-of select=".//dt" /></span></h3>
+            <div class="widget widget_categories" data-expanded="true">
+              <h4 class="widget-title"><span><xsl:value-of select=".//dt" /></span></h4>
               <div class="post-content">
 
                 <!-- dd 轉 ul list -->
                 <xsl:if test=".//dd[2]">
-                  <ul class="nostyle special icon-list">
+                  <ul>
                     <xsl:for-each css:select="dd.portletItem">
-                      <li>
-                        <i class="list-icon icon-ok accent" style="font-size: 85% !important;"></i> 
+                      <li class="cat-item">
                         <a>
                           <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
                           <xsl:value-of select=".//a" />
@@ -137,7 +133,6 @@
             </div>
 
           </replace>
-<!-- 以上未改 -->
 
 
         <!-- infomation (portal message) -->
@@ -147,10 +142,10 @@
             <div>
                 <xsl:attribute name="class">
                     <xsl:choose>
-                        <xsl:when test="@class='portalMessage info'">alert success</xsl:when>
+                        <xsl:when test="@class='portalMessage info'">alert info</xsl:when>
                         <xsl:when test="@class='portalMessage warning'">alert warning</xsl:when>
                         <xsl:when test="@class='portalMessage error'">alert error</xsl:when>
-                        <xsl:otherwise>alert</xsl:otherwise>
+                        <xsl:otherwise>alert info</xsl:otherwise>
                     </xsl:choose>
                 </xsl:attribute>
                 <div class="content">
@@ -161,11 +156,11 @@
         </replace>
 
         <!-- banner ad -->
-        <before css:theme-children="div.post-listing.span8" css:content="div#nnsh_ad" />
+        <before css:theme-children="div#content div.span9" css:content="div#nnsh_ad" />
         <replace css:content="div#nnsh_ad ">
           <div class="row last-child">
             <xsl:for-each select="//div[@id='nnsh_ad']/a">
-              <div class="widget-column item span3">
+              <div class="widget-column item span4">
                 <a target="_blank" alt="Banner" title="Banner">
                   <xsl:attribute name="href"><xsl:value-of select="./@href" /></xsl:attribute>
                   <img alt="Banner" title="Banner">
@@ -181,29 +176,30 @@
 
 
         <!-- page title -->
-        <before css:theme-children="div#content div.row div.span8" content="//div[@id='content']/h1" />
+        <replace css:theme-children="div#page-header h3" content="//div[@id='content']/h1" />
 
         <!-- content -->
-        <replace css:theme-children="div#content div.row div.span8" css:content-children="div#content-core" />
+        <replace css:theme-children="div#content div.span9" css:content-children="div#content-core" />
         <after css:theme-children="body" css:content-children="div#nnsh_external_code" />
-        <before css:theme-children="div#content div.row div.span8" css:content="div.addthis_sharing_toolbox" />
-        <after css:theme-children="div#content div.row div.span8" css:content-children="div#nnsh_disqus_block" />
+        <before css:theme-children="div#content div.span9" css:content="div.addthis_sharing_toolbox" />
+        <after css:theme-children="div#content div.span9" css:content-children="div#nnsh_disqus_block" />
           <replace css:content="div#content-core ul">
-            <xsl:copy>
-              <xsl:attribute name="class">arrow</xsl:attribute>
-              <xsl:apply-templates/>
-            </xsl:copy>
+            <div class="widget_recent_entries">
+              <xsl:copy>
+                <xsl:apply-templates/>
+              </xsl:copy>
+            </div>
           </replace>
 
         <!-- download file -->
-        <after css:theme-children="div#content div.row div.span8" css:content="div.download_file" />
+        <after css:theme-children="div#content div.span9" css:content="div.download_file" />
 
         <!-- footer blocks -->
-        <replace css:theme-children="div#footer-middle div.row" css:content="div#nnsh-blocks" />
+        <replace css:theme-children="div#footer div.row" css:content="div#nnsh-blocks" />
           <replace content="//div[@id='nnsh-blocks']/div">
             <div class="span3">
               <div class="widget ewf_widget_contact_info">
-                <h2 class="widget-title"><xsl:value-of select="./h4" /></h2>
+                <h5 class="widget-title"><xsl:value-of select="./h4" /></h5>
                 <xsl:copy-of select="./ul" />
                 <xsl:copy-of select="./div" />
               </div>
@@ -238,13 +234,13 @@
             </ul>
           </div>
         </replace>
-	
+
         <!-- album list-->
         <replace css:content="div.album_list">
           <ul class="portfolio-items portfolio-strip fixed">
             <xsl:for-each select="./div/img">
               <li class="item term-1">
-                <div class="portfolio-item">
+                <div class="portfolio-item" style="margin-bottom:20px; margin-left:10px; margin-right:10px">
                   <div class="portfolio-item-preview">			
                     <img src="_content/portfolio/385x260-1.png" alt="">
                       <xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
@@ -261,7 +257,7 @@
                     </div><!-- end .portfolio-item-overlay -->
                   </div><!-- end .portfolio-item-preview -->
                   <div class="portfolio-item-description">
-                    <h3><xsl:value-of select="current()/@title" /></h3>
+                    <h5><xsl:value-of select="current()/@title" /></h5>
                   </div><!-- end .portfolio-item-description -->
                 </div><!-- end .portfolio-item -->
               </li>

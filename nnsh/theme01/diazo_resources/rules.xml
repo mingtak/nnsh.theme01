@@ -6,15 +6,15 @@
     xmlns:xi="http://www.w3.org/2001/XInclude">
 
     <!-- Apply the following rules to standard Plone pages -->
-<!--
+
     <rules if="$themeid = 'indie'">
         <xi:include href="indie.xml" />
     </rules>
--->
+<!--
     <rules if="$themeid = 'crystal'">
         <xi:include href="crystal.xml" />
     </rules>
-<!--
+
     <rules if="$themeid = 'jango'">
         <xi:include href="jango.xml" />
     </rules>
