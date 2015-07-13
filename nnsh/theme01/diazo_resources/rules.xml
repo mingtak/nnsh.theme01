@@ -7,6 +7,10 @@
 
     <!-- Apply the following rules to standard Plone pages -->
 
+    <rules if="$themeid = 'jango'">
+        <xi:include href="jango.xml" />
+    </rules>
+
     <rules if="$themeid = 'norma'">
         <xi:include href="norma.xml" />
     </rules>
