@@ -10,7 +10,7 @@
     <rules if="$themeid = 'jango'">
         <xi:include href="jango.xml" />
     </rules>
-
+<!--
     <rules if="$themeid = 'norma'">
         <xi:include href="norma.xml" />
     </rules>
@@ -38,5 +38,5 @@
     <rules if="$themeid = 'meteor'">
         <xi:include href="meteor.xml" />
     </rules>
-
+-->
 </rules>
