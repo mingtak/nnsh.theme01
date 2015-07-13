@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rules
+    xmlns="http://namespaces.plone.org/diazo"
+    xmlns:css="http://namespaces.plone.org/diazo/css"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:xi="http://www.w3.org/2001/XInclude">
+
+        <!-- Replace title with Plone's page title  -->
+        <replace css:theme="html head title" css:content="html head title" />
+
+        <!-- Copy base tag from Plone ??-->
+        <before css:theme-children="html head" css:content="html head base" />
+
+        <!-- merge classes from Plone body with theme body -->
+        <merge attributes="class" css:theme="body" css:content="body" />
+
+<!--        <after css:theme="body p" css:content="#visual-portal-wrapper" /> -->
+
+        <!-- logo -->
+        <copy css:theme="a#logo" css:content="a#portal-logo" attributes="href title alt"/>
+        <copy css:theme="a#logo img" css:content="a#portal-logo img" attributes="src alt title" />
+
+        <!-- drop down menu(nav) -->
+<!--        <drop css:theme="div.social-icons" /> -->
+        <replace theme-children="//ul[@id='menu']" content-children="//ul[@id='portal-globalnav']" />
+          <replace css:content-children="li.selected">
+        <xsl:attribute name="class">dropdown active current</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li[@class='plain']">
+            <xsl:attribute name="class">dropdown</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li/a">
+            <xsl:attribute name="class">dropdown-toggle</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+          <replace content-children="//ul[@id='portal-globalnav']/li/ul">
+            <xsl:attribute name="class">dropdown-menu</xsl:attribute>
+            <xsl:apply-templates />
+          </replace>
+
+        <!-- search form -->
+        <replace css:theme="form#custom-search-form" >
+            <form action="/@@search" class="custom-search-form" id="custom-search-form" method="get" role="search">
+                <input id="s" name="SearchableText" value="" type="text" />
+            </form>
+        </replace>
+
+        <!-- slide -->
+        <replace css:theme-children="div#content div.fullwidthbanner ul" css:content="div#nnsh-slide img" />
+        <drop css:theme="div#content div.fullwidthbanner" if="$get_type != 'WebProfile'"/>
+<!--        <drop css:theme="div.home-intro" if-not-path="/" /> -->
+          <replace css:content="div#nnsh-slide img">
+            <li data-transition="fade">
+              <img src="_content/slider/1920x500-2.jpg" alt="">
+                <xsl:attribute name="src"><xsl:value-of select="./@src"/></xsl:attribute>
+                <xsl:attribute name="alt"><xsl:value-of select="./@alt"/></xsl:attribute>
+                <xsl:attribute name="title"><xsl:value-of select="./@alt"/></xsl:attribute>
+              </img>
+              <div class="caption text sfl" 
+                   data-x="190"  
+                   data-y="170" 
+                   data-speed="700" 
+                   data-start="1000" 
+                   data-easing="easeOutBack">
+                <h2 class="text-uppercase"><strong><xsl:value-of select="./@alt"/></strong></h2>
+              </div>  
+            </li>
+          </replace>
+
+
+        <!-- Nav -->
+        <drop css:theme="div#page-header" if="$get_type = 'WebProfile'" />
+<!--        <drop css:theme="section#section-title small" /> -->
+<!--        <before css:theme-children="div#content div.row div.span8" content="//div[@id='content']/h1" /> -->
+        <replace css:theme-children="div#page-header h3"
+                 css:content="div#portal-breadcrumbs" />
+
+        <!-- sidebar -->
+        <replace css:theme-children="div#content div.row div.span4" css:content-children="div#portal-column-one" />
+        <drop css:content="div#portal-column-two" />
+
+<!-- 以下未改 -->
+          <!-- portlet use dd tag -->
+          <replace css:content="div.portletWrapper">
+            <div class="meteor-toggle large" data-expanded="true">
+              <h3><span><xsl:value-of select=".//dt" /></span></h3>
+              <div class="post-content">
+
+                <!-- dd 轉 ul list -->
+                <xsl:if test=".//dd[2]">
+                  <ul class="nostyle special icon-list">
+                    <xsl:for-each css:select="dd.portletItem">
+                      <li>
+                        <i class="list-icon icon-ok accent" style="font-size: 85% !important;"></i> 
+                        <a>
+                          <xsl:attribute name="href"><xsl:value-of select=".//a/@href" /></xsl:attribute>
+                          <xsl:value-of select=".//a" />
+                        </a>
+                      </li>
+                    </xsl:for-each>
+                  </ul>
+                </xsl:if>
+
+                <!-- ad portlet -->
+                <xsl:for-each select=".//dd[@class = 'ad-portlet']">
+                  <a target="_blank">
+                    <xsl:attribute name="href"><xsl:value-of select=".//a/@href"/></xsl:attribute>
+                    <xsl:attribute name="title"><xsl:value-of select=".//a/@title"/></xsl:attribute>
+                    <xsl:attribute name="alt"><xsl:value-of select=".//a/@title"/></xsl:attribute>
+                    <img style="width:100%;margin-bottom:5px">
+                      <xsl:attribute name="src"><xsl:value-of select=".//a/img/@src"/></xsl:attribute>
+                      <xsl:attribute name="title"><xsl:value-of select=".//a/img/@alt"/></xsl:attribute>
+                      <xsl:attribute name="alt"><xsl:value-of select=".//a/img/@alt"/></xsl:attribute>
+                    </img>
+                  </a>
+                </xsl:for-each>
+
+                <!-- static portlet -->
+                <xsl:for-each select=".//div[@class = 'static_page']">
+                  <xsl:copy-of select=".//dd" />
+                </xsl:for-each>
+
+                <!-- marquee portlet -->
+                <xsl:for-each select=".//div[@class = 'marquee_page']">
+                  <marquee direction="up" scrollamount="2" height="200"><xsl:copy-of select=".//dd" /></marquee>
+                </xsl:for-each>
+
+                <!-- quick upload -->
+                <xsl:for-each css:select="dl.portlet.QuickUploadPortlet">
+                    <dl class="portlet QuickUploadPortlet">
+                      <xsl:copy-of select="./dd" />
+                    </dl>
+                </xsl:for-each>
+              </div>
+            </div>
+
+          </replace>
+<!-- 以上未改 -->
+
+
+        <!-- infomation (portal message) -->
+        <before css:theme-children="div#content div.row div.span8" css:content="dl.portalMessage" />
+        <drop css:content="#kssPortalMessage" />
+        <replace content="//dl[contains(@class, 'portalMessage')][position() > 1]">
+            <div>
+                <xsl:attribute name="class">
+                    <xsl:choose>
+                        <xsl:when test="@class='portalMessage info'">alert success</xsl:when>
+                        <xsl:when test="@class='portalMessage warning'">alert warning</xsl:when>
+                        <xsl:when test="@class='portalMessage error'">alert error</xsl:when>
+                        <xsl:otherwise>alert</xsl:otherwise>
+                    </xsl:choose>
+                </xsl:attribute>
+                <div class="content">
+                  <strong><xsl:value-of select="./dt" />： </strong>
+                  <xsl:value-of select="./dd" />
+                </div>
+            </div>
+        </replace>
+
+        <!-- banner ad -->
+        <before css:theme-children="div.post-listing.span8" css:content="div#nnsh_ad" />
+        <replace css:content="div#nnsh_ad ">
+          <div class="row last-child">
+            <xsl:for-each select="//div[@id='nnsh_ad']/a">
+              <div class="widget-column item span3">
+                <a target="_blank" alt="Banner" title="Banner">
+                  <xsl:attribute name="href"><xsl:value-of select="./@href" /></xsl:attribute>
+                  <img alt="Banner" title="Banner">
+                    <xsl:attribute name="style">width:100%</xsl:attribute>
+                    <xsl:attribute name="src"><xsl:value-of select="./img/@src" /></xsl:attribute>
+                  </img>
+                </a>
+              </div>
+            </xsl:for-each>
+          </div>
+          <br />
+        </replace>
+
+
+        <!-- page title -->
+        <before css:theme-children="div#content div.row div.span8" content="//div[@id='content']/h1" />
+
+        <!-- content -->
+        <replace css:theme-children="div#content div.row div.span8" css:content-children="div#content-core" />
+        <after css:theme-children="body" css:content-children="div#nnsh_external_code" />
+        <before css:theme-children="div#content div.row div.span8" css:content="div.addthis_sharing_toolbox" />
+        <after css:theme-children="div#content div.row div.span8" css:content-children="div#nnsh_disqus_block" />
+          <replace css:content="div#content-core ul">
+            <xsl:copy>
+              <xsl:attribute name="class">arrow</xsl:attribute>
+              <xsl:apply-templates/>
+            </xsl:copy>
+          </replace>
+
+        <!-- download file -->
+        <after css:theme-children="div#content div.row div.span8" css:content="div.download_file" />
+
+        <!-- footer blocks -->
+        <replace css:theme-children="div#footer-middle div.row" css:content="div#nnsh-blocks" />
+          <replace content="//div[@id='nnsh-blocks']/div">
+            <div class="span3">
+              <div class="widget ewf_widget_contact_info">
+                <h2 class="widget-title"><xsl:value-of select="./h4" /></h2>
+                <xsl:copy-of select="./ul" />
+                <xsl:copy-of select="./div" />
+              </div>
+            </div>
+          </replace>
+
+        <!-- copyright -->
+        <replace css:theme-children="div#footer-bottom-widget-area-1"
+                 css:content-children="div#portal-footer" />
+        <drop css:theme="#footer-bottom-widget-area-2" />
+
+        <!-- subscribe, 暫未處理 -->
+        <drop css:theme="section#twitter-bar" />
+        <after css:theme-children="div.sidebar.span4">
+            <div class="meteor-toggle large" data-expanded="true">
+              <h3><xsl:value-of css:select="div#portal-footer-wrapper div.form h3" /></h3>
+              <div class="post-content">
+                  <xsl:copy-of css:select="div#portal-footer-wrapper div.form form" />
+              </div>
+            </div>
+        </after>
+
+        <!-- portal-personaltools -->
+        <replace css:theme-children="div#header-top div.row" css:content="#portal-personaltools" />
+        <replace css:content="#portal-personaltools">
+          <div class="widget ewf_widget_contact_info span12" align="right">
+            <ul>
+              <li>Hi, <xsl:value-of select="./dt" /></li>
+              <xsl:for-each select=".//li">
+                <xsl:copy-of select="." />
+              </xsl:for-each>
+            </ul>
+          </div>
+        </replace>
+	
+        <!-- album list-->
+        <replace css:content="div.album_list">
+          <ul class="portfolio-items portfolio-strip fixed">
+            <xsl:for-each select="./div/img">
+              <li class="item term-1">
+                <div class="portfolio-item">
+                  <div class="portfolio-item-preview">			
+                    <img src="_content/portfolio/385x260-1.png" alt="">
+                      <xsl:attribute name="src"><xsl:value-of select="current()/@src" /></xsl:attribute>
+                      <xsl:attribute name="alt"><xsl:value-of select="current()/@alt" /></xsl:attribute>
+                    </img>
+                    <div class="portfolio-item-overlay">
+                      <div class="portfolio-item-overlay-actions">
+                        <a class="magnificPopup-gallery portfolio-item-zoom" href="_content/portfolio/385x260-1.png">
+                          <xsl:attribute name="href"><xsl:value-of select="current()/@short_src" /></xsl:attribute>
+                          <xsl:attribute name="title"><xsl:value-of select="current()/@title" /></xsl:attribute>
+                          <i class="ifc-zoom_in"></i>
+                        </a>
+                      </div><!-- end .portfolio-item-overlay-actions -->
+                    </div><!-- end .portfolio-item-overlay -->
+                  </div><!-- end .portfolio-item-preview -->
+                  <div class="portfolio-item-description">
+                    <h3><xsl:value-of select="current()/@title" /></h3>
+                  </div><!-- end .portfolio-item-description -->
+                </div><!-- end .portfolio-item -->
+              </li>
+            </xsl:for-each>
+          </ul>
+        </replace>
+
+</rules>
