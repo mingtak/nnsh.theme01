@@ -17,3 +17,11 @@ fake-eggs/
 parts/
 dist/
 var/
+*.jpg
+*.png
+*.mp4
+*.gif
+*.tif
+*.bmp
+*.eps
+*.svg
