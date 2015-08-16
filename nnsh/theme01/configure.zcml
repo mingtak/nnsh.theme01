@@ -20,10 +20,10 @@
     directory="diazo_resources"
     type="theme"
     />
-
+<!--
   <browser:jbot
       directory="template_overrides"
       layer=".interfaces.ICustomTheme"
       />
-
+-->
 </configure>
