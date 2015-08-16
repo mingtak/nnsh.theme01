@@ -10,7 +10,7 @@
     <rules if="$themeid = 'indie'">
         <xi:include href="indie.xml" />
     </rules>
-<!--
+
     <rules if="$themeid = 'crystal'">
         <xi:include href="crystal.xml" />
     </rules>
@@ -46,5 +46,5 @@
     <rules if="$themeid = 'meteor'">
         <xi:include href="meteor.xml" />
     </rules>
--->
+
 </rules>
