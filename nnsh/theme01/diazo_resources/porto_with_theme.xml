@@ -172,27 +172,27 @@
         <after css:theme-children="body" css:content-children="div#nnsh_external_code" />
         <before css:theme-children="div.col-md-9" css:content="div.addthis_sharing_toolbox" />
         <after css:theme-children="div.col-md-9" css:content-children="div#nnsh_disqus_block" />
-          <replace css:content="div#content-core ul">
+<!--          <replace css:content="div#content-core ul">
             <xsl:copy>
               <xsl:attribute name="class">list icons</xsl:attribute>
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-
-          <replace content="//div[@id='content-core']//ul[not(@class='list')]//li">
+-->
+<!--          <replace content="//div[@id='content-core']//ul[not(@class='list')]//li">
             <xsl:copy>
               <i class="icon icon-arrow-right"></i>
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-
-          <replace css:content-children="div#content-core ul li a">
+-->
+<!--          <replace css:content-children="div#content-core ul li a">
             <xsl:copy>
               <xsl:attribute name="href"><xsl:value-of select="./@href"/></xsl:attribute>
               <xsl:apply-templates/>
             </xsl:copy>
           </replace>
-
+-->
         <!-- download file -->
         <after css:theme-children="div.col-md-9" css:content="div.download_file" />
 

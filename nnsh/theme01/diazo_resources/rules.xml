@@ -7,7 +7,7 @@
 
     <!-- Apply the following rules to standard Plone pages -->
 
-    <rules if="$themeid = 'indie'">
+<!--    <rules if="$themeid = 'indie'">
         <xi:include href="indie.xml" />
     </rules>
 
@@ -38,7 +38,7 @@
     <rules if="$themeid = 'jollyness'">
         <xi:include href="jollyness.xml" />
     </rules>
-
+-->
     <rules if="$themeid = 'porto'">
         <xi:include href="porto.xml" />
     </rules>
