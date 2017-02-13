@@ -105,6 +105,13 @@
                   </a>
                 </xsl:for-each>
 
+                <!-- portletNavigationTree portlet -->
+                <xsl:for-each css:select="dl.portlet.portletNavigationTree">
+                    <dl class="portlet portletNavigationTree">
+                      <xsl:copy-of select="./dd" />
+                    </dl>
+                </xsl:for-each>
+
                 <!-- static portlet -->
                 <xsl:for-each select=".//div[@class = 'static_page']">
                   <xsl:copy-of select=".//dd" />
