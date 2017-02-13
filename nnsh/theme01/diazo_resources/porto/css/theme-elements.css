@@ -1238,8 +1238,11 @@ ul.simple-post-list div.post-meta {
 
 ul.simple-post-list li {
 	border-bottom: 1px dotted #E2E2E2;
+        min-height: 30px;
+/*	min-height: 50px;
 	min-height: 62px;
 	padding: 15px 0;
+*/
 }
 
 ul.simple-post-list li:last-child {
