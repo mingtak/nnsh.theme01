@@ -2,3 +2,30 @@
 
 aside.sidebar section.toggle div.toggle-content a img {
 }
+
+ul.navTree.navTreeLevel0 {
+    padding: 0 0 0 10px;
+}
+
+ul.navTree.navTreeLevel0 > li {
+    margin: 15px 0;
+    padding: 0;
+list-style-type: none;
+}
+
+ul.navTree.navTreeLevel0 > li a {
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	-webkit-transition: all 0.3s;
+	background-image: url(../img/list-primary.png);
+	background-position: 9px 16px;
+	background-repeat: no-repeat;
+	border-bottom: 1px solid #EDEDDE;
+	padding: 8px 20px;
+	transition: all 0.3s;
+        color: #666;
+}
+
+ul.navTree.navTreeLevel0 > li a img {
+    display:none;
+}
